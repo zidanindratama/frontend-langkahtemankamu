@@ -85,7 +85,7 @@ const Articles = () => {
                     className="rounded-md"
                   />
                   <div className="p-5">
-                    <h1 className="px-3 py-1 bg-yellowLTK w-fit rounded-md shadow-sm shadow-yellowLTK/90 mb-3">
+                    <h1 className="px-3 py-1 text-xs md:text-sm bg-yellowLTK w-fit rounded-md shadow-sm shadow-yellowLTK/90 mb-3">
                       May 04, 2023
                     </h1>
                     <h1 className="text-blueLTK uppercase font-bold text-base md:text-lg lg:text-2xl md:max-w-xs">
