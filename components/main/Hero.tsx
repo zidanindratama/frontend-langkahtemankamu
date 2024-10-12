@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="relative py-12 md:py-20 bg-blueLTK">
       <div className="flex flex-col max-w-7xl justify-center mx-auto px-6">
         <div className="flex flex-col">
-          <h1 className="uppercase text-white font-bold text-lg md:text-2xl lg:text-5xl text-center md:max-w-4xl mx-auto">
+          <h1 className="uppercase text-white font-bold text-lg md:text-2xl lg:text-4xl text-center md:max-w-4xl mx-auto">
             COLLABORATIVE SPACE FOR{" "}
             <span className="text-yellowLTK">SOCIO-ENVIRONMENTAL</span> ISSUES
           </h1>
