@@ -26,7 +26,7 @@ const Hero = () => {
         </div>
         <div className="">
           <Image
-            src={"/main/hero.png"}
+            src={"/main/Hero.png"}
             className="w-full"
             alt="Hero Image"
             width={1400}
