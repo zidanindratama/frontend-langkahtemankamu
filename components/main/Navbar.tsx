@@ -12,6 +12,7 @@ interface NavLink {
   id: number;
   label: string;
   href: string;
+  mainHref: string;
 }
 
 export const navLinks: NavLink[] = [
@@ -19,27 +20,32 @@ export const navLinks: NavLink[] = [
     id: 1,
     label: "Home",
     href: "/",
+    mainHref: "#hero",
   },
   {
     id: 2,
     label: "About Us",
     href: "/about-us",
+    mainHref: "#missions",
   },
   {
     id: 3,
     label: "Articles",
     href: "/articles",
+    mainHref: "#articles",
   },
   {
     id: 4,
     label: "Events",
     href: "/events",
+    mainHref: "#events",
   },
 ];
 
 const Navbar = () => {
   const pathname = usePathname();
   const [openSheet, setOpenSheet] = useState(false);
+  console.log(pathname);
 
   return (
     <div className="sticky top-0 py-4 bg-blueLTK drop-shadow z-10">
@@ -54,7 +60,7 @@ const Navbar = () => {
           {navLinks.map((link) => {
             return (
               <Link
-                href={link.href}
+                href={pathname === "/" ? link.mainHref : link.href}
                 className={`${
                   pathname === `${link.href}`
                     ? "text-yellowLTK after:absolute after:bottom-0 after:inset-x-0 after:h-[3px] after:rounded after:bg-yellowLTK"
@@ -87,7 +93,7 @@ const Navbar = () => {
               {navLinks.map((link) => {
                 return (
                   <Link
-                    href={link.href}
+                    href={pathname === "/" ? link.mainHref : link.href}
                     onClick={() => {
                       setOpenSheet(false);
                     }}

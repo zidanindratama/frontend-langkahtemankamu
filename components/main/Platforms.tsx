@@ -8,6 +8,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoLogoTwitter } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { IconType } from "react-icons/lib";
+import { truncateText } from "@/helpers/truncateText";
 
 interface Platform {
   id: number;
@@ -72,7 +73,7 @@ const Platforms = () => {
                     target="_blank"
                     href={platform.url}
                     key={platform.id}
-                    className="p-6 bg-[#C3E7FB] flex flex-col drop-shadow-sm rounded-sm shadow-md shadow-[#C3E7FB]/90 justify-center items-center"
+                    className="p-6 bg-[#C3E7FB] flex flex-col drop-shadow-sm rounded-sm shadow-md shadow-[#C3E7FB]/90 justify-center items-center truncate"
                   >
                     <platform.icon className="w-12 h-12" />
                     <h1 className="font-bold text-base md:text-lg lg:text-xl my-3">
@@ -86,7 +87,7 @@ const Platforms = () => {
               })}
               <Link
                 href={`mailto:${platforms[3].url}`}
-                className="p-6 bg-[#C3E7FB] flex flex-col drop-shadow-sm rounded-sm shadow-md shadow-[#C3E7FB]/90 justify-center items-center"
+                className="p-6 bg-[#C3E7FB] flex flex-col drop-shadow-sm rounded-sm shadow-md shadow-[#C3E7FB]/90 justify-center items-center truncate"
               >
                 <MdEmail className="w-12 h-12" />
                 <h1 className="font-bold text-base md:text-lg lg:text-xl my-3">

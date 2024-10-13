@@ -61,7 +61,7 @@ const Footer = () => {
                 <div className="flex flex-col gap-2">
                   <Link
                     href={`mailto:info@langkahtemankamu.my.id`}
-                    className="hover:text-yellowLTK"
+                    className="hover:text-yellowLTK truncate"
                   >
                     info@langkahtemankamu.my.id
                   </Link>

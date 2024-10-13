@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="relative py-12 md:py-20 bg-blueLTK">
+    <div className="relative py-12 md:py-20 bg-blueLTK" id="hero">
       <div className="flex flex-col max-w-7xl justify-center mx-auto px-6">
         <div className="flex flex-col">
           <h1 className="uppercase text-white font-bold text-lg md:text-2xl lg:text-5xl text-center md:max-w-4xl mx-auto">
@@ -24,15 +24,15 @@ const Hero = () => {
             <Link href={"/about-us"}>KNOW US BETTER</Link>
           </Button>
         </div>
-        <div className="">
-          <Image
-            src={"/main/Hero.png"}
-            className="w-full"
-            alt="Hero Image"
-            width={1400}
-            height={1400}
-          />
-        </div>
+      </div>
+      <div className="p-6">
+        <Image
+          src={"/main/Hero.png"}
+          className="w-full object-contain md:h-[60vh]"
+          alt="Hero Image"
+          width={1400}
+          height={1400}
+        />
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const missions: Mission[] = [
 const Missions = () => {
   return (
     <>
-      <div className="relative py-12 md:py-20 bg-white">
+      <div className="relative py-12 md:py-20 bg-white" id="missions">
         <div className="flex flex-col max-w-7xl justify-center mx-auto px-6">
           <div className="flex flex-row justify-center">
             <h1 className="text-left font-bold text-lg md:text-2xl lg:text-4xl">

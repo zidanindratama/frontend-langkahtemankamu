@@ -51,10 +51,10 @@ const ourPrograms: OurProgram[] = [
 
 const OurPrograms = () => {
   return (
-    <div className="relative py-12 md:py-20 bg-[#FFEE8E]">
+    <div className="relative py-12 md:py-20 bg-[#FFEE8E]" id="events">
       <div className="flex flex-col max-w-7xl justify-center mx-auto px-6">
         <h1 className="p-4 bg-yellowLTK w-fit uppercase font-bold text-base md:text-xl lg:text-2xl mx-auto md:mx-0 mb-10 rounded-md">
-          OUR PROGRAMS
+          OUR EVENTS
         </h1>
         <Carousel
           opts={{
