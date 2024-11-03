@@ -76,7 +76,7 @@ const Navbar = () => {
             <Link
               href={
                 process.env.NODE_ENV === "development"
-                  ? "/login"
+                  ? "/sign-up"
                   : "/coming-soon"
               }
             >

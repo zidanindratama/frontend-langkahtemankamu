@@ -65,32 +65,30 @@ const OurPrograms = () => {
           <CarouselContent>
             {ourPrograms.map((ourPogram) => {
               return (
-                <>
-                  <CarouselItem
-                    className="md:basis-1/2 lg:basis-1/3"
-                    key={ourPogram.id}
-                  >
-                    <Link href={`/events/${ourPogram.slug}`} className="w-fit">
-                      <div className="bg-white rounded-b-md rounded-t-xl">
-                        <Image
-                          src={ourPogram.image}
-                          alt={ourPogram.title}
-                          width={1000}
-                          height={1000}
-                          className="rounded-md"
-                        />
-                        <div className="p-5">
-                          <h1 className="text-blueLTK uppercase font-bold text-base md:text-lg lg:text-2xl md:max-w-xs">
-                            {truncateText(ourPogram.title, 30)}
-                          </h1>
-                          <p className="text-sm md:text-base mt-3">
-                            {truncateText(ourPogram.description, 100)}
-                          </p>
-                        </div>
+                <CarouselItem
+                  className="md:basis-1/2 lg:basis-1/3"
+                  key={ourPogram.id}
+                >
+                  <Link href={`/events/${ourPogram.slug}`} className="w-fit">
+                    <div className="bg-white rounded-b-md rounded-t-xl">
+                      <Image
+                        src={ourPogram.image}
+                        alt={ourPogram.title}
+                        width={1000}
+                        height={1000}
+                        className="rounded-md"
+                      />
+                      <div className="p-5">
+                        <h1 className="text-blueLTK uppercase font-bold text-base md:text-lg lg:text-2xl md:max-w-xs">
+                          {truncateText(ourPogram.title, 30)}
+                        </h1>
+                        <p className="text-sm md:text-base mt-3">
+                          {truncateText(ourPogram.description, 100)}
+                        </p>
                       </div>
-                    </Link>
-                  </CarouselItem>
-                </>
+                    </div>
+                  </Link>
+                </CarouselItem>
               );
             })}
           </CarouselContent>
