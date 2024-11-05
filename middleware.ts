@@ -41,18 +41,18 @@ export async function middleware(request: NextRequest) {
     const user: any = jwtDecode(accessToken?.value as string);
     url.pathname = "/access-denied";
 
-    // Kalo MEMBER dan BLOGGER mau akses adminRoutes, redirect to access-denied
+    // Kalo MEMBER mau akses commonAdminAndBloggerRoutes, redirect to access-denied
     if (
-      (user.role === "MEMBER" || user.role == "BLOGGER") &&
-      adminRoutes.includes(pathname)
+      user.role === "MEMBER" &&
+      commonAdminAndBloggerRoutes.some((route) => pathname.startsWith(route))
     ) {
       return NextResponse.redirect(url);
     }
 
-    // Kalo ADMINISTARTOR dan BLOGGER mau akses memberRoutes, redirect to access-denied
+    // Kalo MEMBER dan BLOGGER mau akses adminRoutes, redirect to access-denied
     if (
-      (user.role === "ADMINISTARTOR" || user.role == "BLOGGER") &&
-      memberRoutes.includes(pathname)
+      (user.role === "MEMBER" || user.role == "BLOGGER") &&
+      adminRoutes.some((route) => pathname.startsWith(route))
     ) {
       return NextResponse.redirect(url);
     }
@@ -60,15 +60,15 @@ export async function middleware(request: NextRequest) {
     // Kalo ADMINISTARTOR dan MEMBER mau akses bloggerRoutes, redirect to access-denied
     if (
       (user.role === "ADMINISTARTOR" || user.role == "MEMBER") &&
-      bloggerRoutes.includes(pathname)
+      bloggerRoutes.some((route) => pathname.startsWith(route))
     ) {
       return NextResponse.redirect(url);
     }
 
-    // Kalo MEMBER mau akses commonAdminAndBloggerRoutes, redirect to access-denied
+    // Kalo ADMINISTARTOR dan BLOGGER mau akses memberRoutes, redirect to access-denied
     if (
-      user.role === "MEMBER" &&
-      commonAdminAndBloggerRoutes.some((route) => pathname.startsWith(route))
+      (user.role === "ADMINISTARTOR" || user.role == "BLOGGER") &&
+      memberRoutes.some((route) => pathname.startsWith(route))
     ) {
       return NextResponse.redirect(url);
     }
