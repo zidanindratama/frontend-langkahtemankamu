@@ -3,6 +3,7 @@ import "./globals.css";
 import TanStackProvider from "@/providers/tanstackQueryProvider";
 import Navbar from "@/components/main/Navbar";
 import Footer from "@/components/main/Footer";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Langkah Teman Kamu",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <TanStackProvider>
           <main>{children}</main>
         </TanStackProvider>
+        <Toaster />
       </body>
     </html>
   );

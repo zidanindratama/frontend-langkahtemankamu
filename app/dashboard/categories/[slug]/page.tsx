@@ -1,4 +1,6 @@
-import CategoryDataTable from "@/components/dashboard/categories/CategoryDataTable";
+import CategoryAddForm from "@/components/dashboard/categories/CategoryAddForm";
+import CategoryDeleteForm from "@/components/dashboard/categories/CategoryDeleteForm";
+import CategoryUpdateForm from "@/components/dashboard/categories/CategoryUpdateForm";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,7 +13,15 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import React from "react";
 
-const CategoriesPage = () => {
+type Param = {
+  slug: string;
+};
+
+type Props = {
+  params: Param;
+};
+
+const page = ({ params: { slug } }: Props) => {
   return (
     <div>
       <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -29,15 +39,24 @@ const CategoriesPage = () => {
                   Categories
                 </BreadcrumbLink>
               </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href={`/dashboard/categories/${slug}`}>
+                  Update
+                </BreadcrumbLink>
+              </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
       </header>
       <div className="p-4">
-        <CategoryDataTable />
+        <div className="mb-5">
+          <CategoryDeleteForm slug={slug} />
+        </div>
+        <CategoryUpdateForm slug={slug} />
       </div>
     </div>
   );
 };
 
-export default CategoriesPage;
+export default page;

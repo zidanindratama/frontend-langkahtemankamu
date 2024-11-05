@@ -21,6 +21,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         yellowLTK:
           "bg-yellowLTK text-yellowLTK-foreground shadow hover:bg-yellowLTK/90",
+        blueLTK: "bg-blueLTK text-white shadow hover:bg-blueLTK/90",
       },
       size: {
         default: "h-9 px-4 py-2",

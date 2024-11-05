@@ -25,6 +25,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { useFetchData } from "@/hooks/useFetchData";
 
 const data = {
   user: {
@@ -74,6 +75,11 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { data: myProfile, isSuccess } = useFetchData({
+    queryKey: ["myProfile"],
+    dataProtected: `users/me`,
+  });
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -83,7 +89,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={myProfile?.data} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

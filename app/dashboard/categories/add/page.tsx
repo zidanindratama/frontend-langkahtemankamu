@@ -1,3 +1,4 @@
+import CategoryAddForm from "@/components/dashboard/categories/CategoryAddForm";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import React from "react";
 
-const CategoriesPage = () => {
+const CategoryAddPage = () => {
   return (
     <div>
       <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -38,9 +39,11 @@ const CategoriesPage = () => {
           </Breadcrumb>
         </div>
       </header>
-      <div className="p-4">Add Category Form</div>
+      <div className="p-4">
+        <CategoryAddForm />
+      </div>
     </div>
   );
 };
 
-export default CategoriesPage;
+export default CategoryAddPage;
