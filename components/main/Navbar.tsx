@@ -73,15 +73,7 @@ const Navbar = () => {
             );
           })}
           <Button variant={"yellowLTK"} className="font-semibold px-10" asChild>
-            <Link
-              href={
-                process.env.NODE_ENV === "development"
-                  ? "/sign-up"
-                  : "/coming-soon"
-              }
-            >
-              Join Us
-            </Link>
+            <Link href={"/sign-up"}>Join Us</Link>
           </Button>
         </div>
         <div className="md:hidden flex flex-col">
@@ -113,15 +105,7 @@ const Navbar = () => {
                 className="font-semibold px-10"
                 asChild
               >
-                <Link
-                  href={
-                    process.env.NODE_ENV === "development"
-                      ? "/sign-up"
-                      : "/coming-soon"
-                  }
-                >
-                  Join Us
-                </Link>
+                <Link href={"/sign-up"}>Join Us</Link>
               </Button>
             </SheetContent>
           </Sheet>
