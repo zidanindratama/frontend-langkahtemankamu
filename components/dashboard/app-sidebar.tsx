@@ -13,6 +13,7 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  Users,
 } from "lucide-react";
 
 import { NavMain } from "@/components/dashboard/nav-main";
@@ -42,6 +43,18 @@ const data = {
   ],
   navMain: [
     {
+      title: "Users",
+      url: "/dashboard/users",
+      icon: Users,
+      items: [
+        {
+          title: "List of Users",
+          url: "/dashboard/users",
+        },
+      ],
+      roles: ["ADMINISTRATOR"],
+    },
+    {
       title: "Categories",
       url: "/dashboard/categories",
       icon: SquareTerminal,
@@ -55,6 +68,7 @@ const data = {
           url: "/dashboard/categories",
         },
       ],
+      roles: ["ADMINISTRATOR"],
     },
     {
       title: "Blogs",
@@ -70,6 +84,7 @@ const data = {
           url: "/dashboard/blogs",
         },
       ],
+      roles: ["ADMINISTRATOR", "BLOGGER"],
     },
   ],
 };
@@ -80,13 +95,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     dataProtected: `users/me`,
   });
 
+  const filteredNavMain = data.navMain.filter(
+    (item) => !item.roles || item.roles.includes(myProfile?.data.role)
+  );
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={filteredNavMain} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={myProfile?.data} />

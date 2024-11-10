@@ -16,7 +16,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CategoryColumn } from "./CategoryColumn";
 import { Input } from "@/components/ui/input";
-import { Trash } from "lucide-react";
 import { useDebounce } from "@/hooks/useDebounce";
 
 const CategoryDataTable = () => {

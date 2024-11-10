@@ -22,6 +22,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
+import { Badge } from "./ui/badge";
 
 export function DataTable({
   data,
@@ -70,8 +72,8 @@ export function DataTable({
   });
 
   return (
-    <div className="w-full">
-      <div className="rounded-md border">
+    <>
+      <div className="overflow-x-auto rounded-lg border grid grid-cols-1">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -114,7 +116,7 @@ export function DataTable({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  Data Kosong.
+                  Empty Data.
                 </TableCell>
               </TableRow>
             )}
@@ -145,6 +147,6 @@ export function DataTable({
           </Button>
         </div>
       </div>
-    </div>
+    </>
   );
 }

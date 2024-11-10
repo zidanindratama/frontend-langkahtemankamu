@@ -8,23 +8,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #095882;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #e7d21d;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #ffee8e;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

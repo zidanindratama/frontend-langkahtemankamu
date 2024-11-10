@@ -1,3 +1,4 @@
+import BlogAddForm from "@/components/dashboard/blogs/BlogAddForm";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,9 +9,10 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import React from "react";
 
-const CategoriesPage = () => {
+const AddBlogPage = () => {
   return (
     <div>
       <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -36,9 +38,13 @@ const CategoriesPage = () => {
           </Breadcrumb>
         </div>
       </header>
-      <div className="p-4">Add Blog Form</div>
+      <div className="p-4 grid grid-cols-1">
+        <TooltipProvider>
+          <BlogAddForm />
+        </TooltipProvider>
+      </div>
     </div>
   );
 };
 
-export default CategoriesPage;
+export default AddBlogPage;

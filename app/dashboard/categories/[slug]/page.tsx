@@ -21,7 +21,7 @@ type Props = {
   params: Param;
 };
 
-const page = ({ params: { slug } }: Props) => {
+const UpdateBlogCategoryPage = ({ params: { slug } }: Props) => {
   return (
     <div>
       <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
@@ -59,4 +59,4 @@ const page = ({ params: { slug } }: Props) => {
   );
 };
 
-export default page;
+export default UpdateBlogCategoryPage;

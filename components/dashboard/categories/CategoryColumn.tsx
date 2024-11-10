@@ -15,7 +15,7 @@ export const CategoryColumn: ColumnDef<Category>[] = [
     header: ({ column }) => {
       return (
         <Button className="font-Sora" variant="ghost">
-          Nama
+          Name
         </Button>
       );
     },
@@ -24,14 +24,14 @@ export const CategoryColumn: ColumnDef<Category>[] = [
   {
     accessorKey: "edit",
     header: ({ column }) => {
-      return <h1>Edit</h1>;
+      return <h1>Update</h1>;
     },
     cell: ({ row }) => {
-      const storeCategory = row.original;
+      const category = row.original;
 
       return (
         <div className="p-2 rounded-full w-fit bg-[#FEF4E8]">
-          <Link href={`/dashboard/categories/${storeCategory.slug}`}>
+          <Link href={`/dashboard/categories/${category.slug}`}>
             <Pencil className="w-5 h-5 text-[#F1901A]" />
           </Link>
         </div>
