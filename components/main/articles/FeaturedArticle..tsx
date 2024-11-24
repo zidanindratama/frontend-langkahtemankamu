@@ -45,7 +45,7 @@ const FeaturedArticle = () => {
                 <h1 className="font-bold text-base md:text-xl xl:text-2xl mb-2">
                   {featured.title}
                 </h1>
-                <p className="font-light text-xs md:text-base">
+                <p className="font-light text-sm md:text-base">
                   {featured.shortDescription}
                 </p>
                 <Button
