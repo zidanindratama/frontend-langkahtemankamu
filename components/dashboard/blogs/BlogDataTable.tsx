@@ -24,6 +24,10 @@ const BlogDataTable = () => {
   const [pageSize, setPageSize] = useState(10);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedFeatured, setSelectedFeatured] = useState<string | null>(null);
+  const [selectedSortOrderBy, setSelectedSortOrderBy] = useState<string | null>(
+    null
+  );
   const debouncedSearch = useDebounce<string>(search, 1000);
 
   const {
@@ -36,8 +40,10 @@ const BlogDataTable = () => {
     queryKey: ["blogsData", pageIndex.toString()],
     dataProtected: `blogs?pgNum=${
       pageIndex + 1
-    }&pgSize=${pageSize}&name=${debouncedSearch}&category=${
+    }&pgSize=${pageSize}&title=${debouncedSearch}&category=${
       selectedCategory || ""
+    }&featured=${selectedFeatured || ""}&sortOrder=${
+      selectedSortOrderBy || ""
     }`,
   });
 
@@ -53,11 +59,19 @@ const BlogDataTable = () => {
   const resetFilter = () => {
     setSearch("");
     setSelectedCategory(null);
+    setSelectedFeatured(null);
+    setSelectedSortOrderBy(null);
   };
 
   useEffect(() => {
     refetch();
-  }, [debouncedSearch, selectedCategory, refetch]);
+  }, [
+    debouncedSearch,
+    selectedCategory,
+    selectedFeatured,
+    selectedSortOrderBy,
+    refetch,
+  ]);
 
   return (
     <div className="overflow-hidden">
@@ -87,7 +101,7 @@ const BlogDataTable = () => {
                   </Button>
                 </div>
               </div>
-              <div>
+              <div className="flex flex-col md:flex-row gap-5">
                 <Select onValueChange={(value) => setSelectedCategory(value)}>
                   <SelectTrigger className="md:w-[180px]">
                     <SelectValue
@@ -99,6 +113,7 @@ const BlogDataTable = () => {
                     />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value={"all"}>All</SelectItem>
                     {categories?.map((category: Category) => {
                       return (
                         <SelectItem key={category.id} value={category.name}>
@@ -106,6 +121,41 @@ const BlogDataTable = () => {
                         </SelectItem>
                       );
                     })}
+                  </SelectContent>
+                </Select>
+                <Select onValueChange={(value) => setSelectedFeatured(value)}>
+                  <SelectTrigger className="md:w-[180px]">
+                    <SelectValue
+                      placeholder={
+                        selectedFeatured !== null
+                          ? selectedFeatured === "true"
+                            ? "Featured"
+                            : "Not Featured"
+                          : "Select Feature"
+                      }
+                    />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="true">Featured</SelectItem>
+                    <SelectItem value="false">Not Featured</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select
+                  onValueChange={(value) => setSelectedSortOrderBy(value)}
+                >
+                  <SelectTrigger className="md:w-[180px]">
+                    <SelectValue
+                      placeholder={
+                        selectedSortOrderBy !== null
+                          ? selectedSortOrderBy
+                          : "Sort By"
+                      }
+                    />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="newest">Newest</SelectItem>
+                    <SelectItem value="oldest">Oldest</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

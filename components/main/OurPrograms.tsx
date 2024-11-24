@@ -103,7 +103,7 @@ const OurPrograms = () => {
           asChild
         >
           <Link
-            href={"/events"}
+            href={"/coming-soon"}
             className="flex flex-row justify-between gap-4 uppercase"
           >
             <span>View More</span>

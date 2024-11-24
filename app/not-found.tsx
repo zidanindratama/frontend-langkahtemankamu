@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Langkah Teman Kamu | 404 Not Found",
+  title: "404 Not Found",
   description: "Page not found",
 };
 

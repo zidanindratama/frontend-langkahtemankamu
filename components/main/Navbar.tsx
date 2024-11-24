@@ -37,7 +37,7 @@ export const navLinks: NavLink[] = [
   {
     id: 4,
     label: "Events",
-    href: "/events",
+    href: "/coming-soon",
     mainHref: "#events",
   },
 ];
@@ -45,7 +45,6 @@ export const navLinks: NavLink[] = [
 const Navbar = () => {
   const pathname = usePathname();
   const [openSheet, setOpenSheet] = useState(false);
-  console.log(pathname);
 
   return (
     <div className="sticky top-0 py-4 bg-blueLTK drop-shadow z-10">
@@ -62,7 +61,7 @@ const Navbar = () => {
               <Link
                 href={pathname === "/" ? link.mainHref : link.href}
                 className={`${
-                  pathname === `${link.href}`
+                  pathname === link.href || pathname.startsWith(link.href + "/")
                     ? "text-yellowLTK after:absolute after:bottom-0 after:inset-x-0 after:h-[3px] after:rounded after:bg-yellowLTK"
                     : "hover:text-yellowLTK"
                 } text-base text-white relative pb-1 font-semibold`}

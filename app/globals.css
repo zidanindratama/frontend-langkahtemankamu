@@ -89,11 +89,27 @@ body {
 @layer base {
   * {
     @apply border-border;
-  }
-  html {
     scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .prose * {
+    all: revert;
+  }
+
+  .heading-node {
+    @apply p-3 bg-yellowLTK/20 w-fit;
+  }
+
+  .text-node {
+    @apply text-justify;
+  }
+
+  .prose img {
+    @apply mx-auto rounded-md shadow-md h-auto object-contain;
+    max-width: 75%;
+    display: block;
   }
 }

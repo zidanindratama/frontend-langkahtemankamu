@@ -16,6 +16,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Editor } from "@tiptap/react";
@@ -25,10 +32,13 @@ import { z } from "zod";
 import React, { useCallback, useEffect, useRef } from "react";
 import { useFetchData } from "@/hooks/useFetchData";
 import { useUpdateData } from "@/hooks/useUpdateData";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   title: z.string(),
   coverImage: z.any(),
+  featured: z.string(),
+  shortDescription: z.string(),
   content: z.string(),
 });
 
@@ -46,6 +56,7 @@ const BlogUpdateForm = ({ slug }: Props) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
+      shortDescription: "",
       content: "",
       coverImage: null,
     },
@@ -58,7 +69,9 @@ const BlogUpdateForm = ({ slug }: Props) => {
     if (isSuccess && blogData) {
       reset({
         title: blogData.data.title || "",
+        shortDescription: blogData.data.shortDescription || "",
         content: blogData.data.content || "",
+        featured: blogData.data.featured === true ? "true" : "false",
         coverImage: blogData.data.image || null,
       });
       if (editorRef.current) {
@@ -99,6 +112,8 @@ const BlogUpdateForm = ({ slug }: Props) => {
     };
 
     appendIfNotNull("title", values.title);
+    appendIfNotNull("shortDescription", values.shortDescription);
+    appendIfNotNull("featured", values.featured);
     appendIfNotNull("content", values.content);
 
     if (isFileList) {
@@ -143,6 +158,43 @@ const BlogUpdateForm = ({ slug }: Props) => {
                         type="file"
                         placeholder="Cover Image"
                         {...coverImageRef}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="featured"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Featured</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select feature" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="true">Featured</SelectItem>
+                        <SelectItem value="false">Not Featured</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="shortDescription"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Short Deescription</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us a little bit about this blog"
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage />

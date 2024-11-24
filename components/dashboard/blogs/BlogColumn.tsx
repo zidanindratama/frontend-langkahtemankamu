@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Pencil } from "lucide-react";
 import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { truncateText } from "@/helpers/truncateText";
 
 interface Author {
   id: string;
@@ -24,12 +26,14 @@ interface Category {
   updatedAt: string;
 }
 
-interface Blog {
+export interface Blog {
   id: string;
   title: string;
   slug: string;
+  shortDescription: string;
   content: string;
   image: string;
+  featured: boolean;
   authorId: string;
   createdAt: string;
   updatedAt: string;
@@ -53,10 +57,32 @@ export const BlogColumn: ColumnDef<Blog>[] = [
         <Image
           src={blog.image}
           alt={blog.slug}
-          width={1000}
-          height={1000}
-          className="md:w-96 md:h-72 object-cover"
+          width={612}
+          height={344}
+          className="w-full md:w-96 md:h-72 object-contain"
         />
+      );
+    },
+  },
+  {
+    accessorKey: "featured",
+    header: ({ column }) => {
+      return (
+        <Button className="font-Sora" variant="ghost">
+          Featured
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const blog = row.original;
+      return (
+        <div>
+          {blog.featured === false ? (
+            <Badge variant={"outline"}>Not Featured</Badge>
+          ) : (
+            <Badge variant={"default"}>Featured</Badge>
+          )}
+        </div>
       );
     },
   },
@@ -71,7 +97,7 @@ export const BlogColumn: ColumnDef<Blog>[] = [
     },
     cell: ({ row }) => {
       const blog = row.original;
-      return <div className="capitalize">{blog.title}</div>;
+      return <div className="capitalize">{truncateText(blog.title, 30)}</div>;
     },
   },
   {

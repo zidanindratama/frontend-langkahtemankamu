@@ -7,7 +7,12 @@ import Navbar from "@/components/main/Navbar";
 import OurPrograms from "@/components/main/OurPrograms";
 import PartnersAndAchievements from "@/components/main/PartnersAndAchievements";
 import Platforms from "@/components/main/Platforms";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Main",
+};
 
 const MainPageLTK = () => {
   return (

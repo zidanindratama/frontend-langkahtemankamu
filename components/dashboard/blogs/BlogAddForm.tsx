@@ -18,6 +18,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { useAddData } from "@/hooks/useAddData";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,10 +35,13 @@ import { z } from "zod";
 import React, { useCallback, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useFetchData } from "@/hooks/useFetchData";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   title: z.string(),
   coverImage: z.any(),
+  featured: z.string(),
+  shortDescription: z.string(),
   content: z.string(),
 });
 
@@ -79,6 +89,8 @@ const BlogAddForm = () => {
 
       appendIfNotNull("title", values.title);
       appendIfNotNull("content", values.content);
+      appendIfNotNull("shortDescription", values.shortDescription);
+      appendIfNotNull("featured", values.featured);
       appendIfNotNull("authorId", myProfile?.data.id);
 
       if (values.coverImage[0] !== undefined) {
@@ -124,6 +136,43 @@ const BlogAddForm = () => {
                         type="file"
                         placeholder="Cover Image"
                         {...coverImageRef}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="featured"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Featured</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select feature" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="true">Featured</SelectItem>
+                        <SelectItem value="false">Not Featured</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="shortDescription"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Short Deescription</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us a little bit about this blog"
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage />
