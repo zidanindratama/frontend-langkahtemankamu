@@ -26,7 +26,6 @@ const Hero = () => {
               We aim to empower them to make meaningful contributions in raising
               global understanding and awareness.
             </p>
-            s
           </div>
         </div>
       </div>
