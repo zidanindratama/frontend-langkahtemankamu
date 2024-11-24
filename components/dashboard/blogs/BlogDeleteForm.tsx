@@ -13,7 +13,7 @@ const BlogDeleteForm = ({ slug }: Props) => {
   const mutationBlogDelete = useDeleteData({
     queryKey: "blogsData",
     dataProtected: `blogs/${slug}`,
-    backUrl: `/dashboard/blogs`,
+    backUrl: `/dashboard/articles`,
   });
 
   const handleDelete = (e: any) => {
@@ -29,7 +29,7 @@ const BlogDeleteForm = ({ slug }: Props) => {
         onClick={handleDelete}
       >
         <Trash className="w-4 h-4" />
-        Delete Blog
+        Delete Article
       </Button>
     </div>
   );

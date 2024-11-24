@@ -85,7 +85,7 @@ const BlogUpdateForm = ({ slug }: Props) => {
   const mutationUpdateBlog = useUpdateData({
     queryKey: "blogData",
     dataProtected: `blogs/${slug}`,
-    backUrl: `/dashboard/blogs/${slug}`,
+    backUrl: `/dashboard/articles/${slug}`,
     multipart: true,
   });
 
@@ -131,7 +131,7 @@ const BlogUpdateForm = ({ slug }: Props) => {
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <Card>
             <CardHeader>
-              <CardTitle>Update Blog</CardTitle>
+              <CardTitle>Update Article</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-6">
               <FormField
@@ -193,7 +193,7 @@ const BlogUpdateForm = ({ slug }: Props) => {
                     <FormLabel>Short Deescription</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell us a little bit about this blog"
+                        placeholder="Tell us a little bit about this articles"
                         {...field}
                       />
                     </FormControl>

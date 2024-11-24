@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest) {
 
   const memberRoutes = ["/test/memberRoutes"];
 
-  const commonAdminAndBloggerRoutes = ["/dashboard/blogs"];
+  const commonAdminAndBloggerRoutes = ["/dashboard/articles"];
 
   const accessToken = cookieStore.get("accessToken");
 

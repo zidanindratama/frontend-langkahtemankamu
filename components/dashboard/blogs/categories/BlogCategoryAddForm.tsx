@@ -60,7 +60,7 @@ const BlogCategoryAddForm = ({ blogSlug }: Props) => {
   const mutationAddBlogCategory = useAddData({
     queryKey: "blogData",
     dataProtected: `categories-on-blogs/${blogSlug}`,
-    backUrl: `/dashboard/blogs/${blogSlug}`,
+    backUrl: `/dashboard/articles/${blogSlug}`,
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -73,7 +73,7 @@ const BlogCategoryAddForm = ({ blogSlug }: Props) => {
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <Card>
             <CardHeader>
-              <CardTitle>Add Blog Category</CardTitle>
+              <CardTitle>Add Article Category</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-6">
               <FormField
@@ -81,7 +81,7 @@ const BlogCategoryAddForm = ({ blogSlug }: Props) => {
                 name="categoryId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Blog Category</FormLabel>
+                    <FormLabel>Article Category</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>

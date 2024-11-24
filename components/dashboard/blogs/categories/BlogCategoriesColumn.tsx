@@ -38,7 +38,7 @@ export const BlogCategoryColumn: ColumnDef<BlogCategory>[] = [
     header: ({ column }) => {
       return (
         <Button className="font-Sora" variant="ghost">
-          Nama
+          Name
         </Button>
       );
     },
@@ -58,7 +58,7 @@ export const BlogCategoryColumn: ColumnDef<BlogCategory>[] = [
       return (
         <div className="p-2 rounded-full w-fit bg-[#FEF4E8]">
           <Link
-            href={`/dashboard/blogs/${blogCategory.blog.slug}/categories/${blogCategory.id}`}
+            href={`/dashboard/articles/${blogCategory.blog.slug}/categories/${blogCategory.id}`}
           >
             <Pencil className="w-5 h-5 text-[#F1901A]" />
           </Link>

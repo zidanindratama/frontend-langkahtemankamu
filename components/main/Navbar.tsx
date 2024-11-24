@@ -26,7 +26,7 @@ export const navLinks: NavLink[] = [
     id: 2,
     label: "About Us",
     href: "/about-us",
-    mainHref: "#missions",
+    mainHref: "/about-us",
   },
   {
     id: 3,
@@ -49,12 +49,14 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 py-4 bg-blueLTK drop-shadow z-10">
       <div className="relative flex flex-row justify-between items-center max-w-7xl mx-auto px-6">
-        <Image
-          src={"/main/Logo-LTK.png"}
-          alt="Logo LTK"
-          width={200}
-          height={200}
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/main/Logo-LTK.png"}
+            alt="Logo LTK"
+            width={200}
+            height={200}
+          />
+        </Link>
         <div className="hidden md:flex flex-row items-center gap-8">
           {navLinks.map((link) => {
             return (

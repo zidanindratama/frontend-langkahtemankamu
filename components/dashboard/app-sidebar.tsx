@@ -71,17 +71,17 @@ const data = {
       roles: ["ADMINISTRATOR"],
     },
     {
-      title: "Blogs",
+      title: "Articles",
       url: "#",
       icon: BookOpen,
       items: [
         {
-          title: "Add Blog",
-          url: "/dashboard/blogs/add",
+          title: "Add Article",
+          url: "/dashboard/articles/add",
         },
         {
-          title: "List of Blogs",
-          url: "/dashboard/blogs",
+          title: "List of Articles",
+          url: "/dashboard/articles",
         },
       ],
       roles: ["ADMINISTRATOR", "BLOGGER"],

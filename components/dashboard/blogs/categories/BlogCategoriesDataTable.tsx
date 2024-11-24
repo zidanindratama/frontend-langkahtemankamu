@@ -57,7 +57,7 @@ const BlogCategoriesDataTable = ({ blogSlug }: Props) => {
           <Card className="max-w-full">
             <CardHeader>
               <div className="flex flex-col md:flex-row gap-5 md:items-center justify-between mb-8">
-                <CardTitle>Blog Categories</CardTitle>
+                <CardTitle>Article Categories</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
@@ -74,8 +74,8 @@ const BlogCategoriesDataTable = ({ blogSlug }: Props) => {
             <CardFooter>
               <div className="flex flex-row justify-end mb-5">
                 <Button variant={"yellowLTK"} asChild>
-                  <Link href={`/dashboard/blogs/${blogSlug}/categories/add`}>
-                    Add Blog Category
+                  <Link href={`/dashboard/articles/${blogSlug}/categories/add`}>
+                    Add Article Category
                   </Link>
                 </Button>
               </div>

@@ -53,7 +53,7 @@ const FeaturedArticle = () => {
                   className="md:w-fit font-bold mt-5 text-xs md:text-base md:px-10 md:py-6 rounded-none capitalize"
                   asChild
                 >
-                  <Link href={`/blogs/${featured.slug}`}>Read More</Link>
+                  <Link href={`/articles/${featured.slug}`}>Read More</Link>
                 </Button>
               </div>
               <Image
@@ -61,6 +61,7 @@ const FeaturedArticle = () => {
                 alt={featured.slug}
                 width={1500}
                 height={1500}
+                className="order-first md:order-last"
               />
             </div>
           )

@@ -124,7 +124,7 @@ export const BlogColumn: ColumnDef<Blog>[] = [
 
       return (
         <div className="p-2 rounded-full w-fit bg-[#FEF4E8]">
-          <Link href={`/dashboard/blogs/${blog.slug}`}>
+          <Link href={`/dashboard/articles/${blog.slug}`}>
             <Pencil className="w-5 h-5 text-[#F1901A]" />
           </Link>
         </div>

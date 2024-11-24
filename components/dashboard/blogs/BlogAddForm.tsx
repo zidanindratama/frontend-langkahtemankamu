@@ -109,7 +109,7 @@ const BlogAddForm = () => {
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <Card>
             <CardHeader>
-              <CardTitle>Add Blog</CardTitle>
+              <CardTitle>Add Article</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-6">
               <FormField
@@ -171,7 +171,7 @@ const BlogAddForm = () => {
                     <FormLabel>Short Deescription</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell us a little bit about this blog"
+                        placeholder="Tell us a little bit about this articles"
                         {...field}
                       />
                     </FormControl>

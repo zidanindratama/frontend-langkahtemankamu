@@ -14,7 +14,7 @@ const BlogCategoryDeleteForm = ({ blogCategoryId, blogSlug }: Props) => {
   const mutationBlogCategoryDelete = useDeleteData({
     queryKey: "blogData",
     dataProtected: `categories-on-blogs/${blogCategoryId}`,
-    backUrl: `/dashboard/blogs/${blogSlug}`,
+    backUrl: `/dashboard/articles/${blogSlug}`,
   });
 
   const handleDelete = (e: any) => {
@@ -30,7 +30,7 @@ const BlogCategoryDeleteForm = ({ blogCategoryId, blogSlug }: Props) => {
         onClick={handleDelete}
       >
         <Trash className="w-4 h-4" />
-        Delete Blog Category
+        Delete Article Category
       </Button>
     </div>
   );

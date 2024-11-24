@@ -82,18 +82,18 @@ const BlogDataTable = () => {
         <>
           <div className="flex flex-row justify-end mb-5">
             <Button variant={"yellowLTK"} asChild>
-              <Link href={"/dashboard/blogs/add"}>Add Blog</Link>
+              <Link href={"/dashboard/articles/add"}>Add Articles</Link>
             </Button>
           </div>
           <Card className="max-w-full">
             <CardHeader>
               <div className="flex flex-col md:flex-row gap-5 md:items-center justify-between mb-8">
-                <CardTitle>Blogs</CardTitle>
+                <CardTitle>Articles</CardTitle>
                 <div className="flex flex-row gap-2 items-center">
                   <Input
                     type="text"
                     className="md:w-fit"
-                    placeholder="Search blog"
+                    placeholder="Search articles"
                     onChange={(e) => setSearch(e.target.value)}
                   />
                   <Button variant={"destructive"} onClick={resetFilter}>

@@ -31,7 +31,7 @@ import { Input } from "@/components/ui/input";
 
 const AllArticles = () => {
   const [pageIndex, setPageIndex] = useState(0);
-  const [pageSize, setPageSize] = useState(4);
+  const [pageSize, setPageSize] = useState(6);
   const [totalPages, setTotalPages] = useState(0);
 
   const [search, setSearch] = useState("");
@@ -54,7 +54,9 @@ const AllArticles = () => {
     queryKey: ["allBlogsData", pageIndex.toString()],
     dataProtected: `blogs?pgNum=${pageIndex + 1}&pgSize=${pageSize}&sortOrder=${
       selectedSortOrderBy || ""
-    }&title=${debouncedSearch}&category=${selectedCategory || ""}`,
+    }&title=${debouncedSearch}&category=${
+      selectedCategory || ""
+    }&featured=false`,
   });
 
   const {
