@@ -35,33 +35,33 @@ import { Category } from "../../categories/CategoryColumn";
 import { useUpdateData } from "@/hooks/useUpdateData";
 
 type Props = {
-  blogSlug: string;
-  blogCategoryId: string;
+  eventSlug: string;
+  eventCategoryId: string;
 };
 
 const formSchema = z.object({
-  categoryId: z.string(),
+  eventCategoryId: z.string(),
 });
 
-const BlogCategoryUpdateForm = ({ blogSlug, blogCategoryId }: Props) => {
+const EventCategoryUpdateForm = ({ eventCategoryId, eventSlug }: Props) => {
   const {
-    data: categoriesData,
+    data: eventCategoriesData,
     isLoading,
     isSuccess,
   } = useFetchData({
-    queryKey: ["categoriesData"],
-    dataProtected: `categories`,
+    queryKey: ["eventCategoriesData"],
+    dataProtected: `event-categories`,
   });
 
-  const { data: blogCategoryData } = useFetchData({
-    queryKey: ["blogCategoryData"],
-    dataProtected: `categories-on-blogs/get/${blogCategoryId}`,
+  const { data: eventCategoryData } = useFetchData({
+    queryKey: ["eventCategoryData"],
+    dataProtected: `event-categories-on-events/get/${eventCategoryId}`,
   });
 
-  const categories = categoriesData?.data.categories;
+  const eventCategories = eventCategoriesData?.data.eventCategories;
 
   const preLoadValues = {
-    categoryId: blogCategoryData?.data.categoryId,
+    eventCategoryId: eventCategoryData?.data.eventCategoryId,
   };
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -69,14 +69,14 @@ const BlogCategoryUpdateForm = ({ blogSlug, blogCategoryId }: Props) => {
     values: preLoadValues || [],
   });
 
-  const mutationUpdateBlogCategory = useUpdateData({
-    queryKey: "blogData",
-    dataProtected: `categories-on-blogs/${blogCategoryId}`,
-    backUrl: `/dashboard/articles/${blogSlug}`,
+  const mutationUpdateEventCategory = useUpdateData({
+    queryKey: "eventData",
+    dataProtected: `event-categories-on-events/${eventCategoryId}`,
+    backUrl: `/dashboard/events/${eventSlug}`,
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    mutationUpdateBlogCategory.mutate(values);
+    mutationUpdateEventCategory.mutate(values);
   };
 
   return (
@@ -85,15 +85,15 @@ const BlogCategoryUpdateForm = ({ blogSlug, blogCategoryId }: Props) => {
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <Card>
             <CardHeader>
-              <CardTitle>Update Article Category</CardTitle>
+              <CardTitle>Update Event Category</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-6">
               <FormField
                 control={form.control}
-                name="categoryId"
+                name="eventCategoryId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Article Category</FormLabel>
+                    <FormLabel>Event Category</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
@@ -101,9 +101,9 @@ const BlogCategoryUpdateForm = ({ blogSlug, blogCategoryId }: Props) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {isSuccess && categories && (
+                        {isSuccess && eventCategories && (
                           <>
-                            {categories.map((category: Category) => {
+                            {eventCategories.map((category: Category) => {
                               return (
                                 <SelectItem
                                   value={category.id}
@@ -132,4 +132,4 @@ const BlogCategoryUpdateForm = ({ blogSlug, blogCategoryId }: Props) => {
   );
 };
 
-export default BlogCategoryUpdateForm;
+export default EventCategoryUpdateForm;

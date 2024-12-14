@@ -13,6 +13,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useFetchData } from "@/hooks/useFetchData";
+import { Event } from "../dashboard/events/EventColumn";
+import { Skeleton } from "../ui/skeleton";
+import { formatDate } from "@/helpers/formatDate";
 
 interface OurProgram {
   id: number;
@@ -50,6 +54,16 @@ const ourPrograms: OurProgram[] = [
 ];
 
 const OurPrograms = () => {
+  const {
+    data: eventsData,
+    refetch,
+    isLoading,
+  } = useFetchData({
+    queryKey: ["eventsData"],
+    dataProtected: `events`,
+  });
+
+  const events = eventsData?.data.events as Event[];
   return (
     <div className="relative py-12 md:py-20 bg-[#FFEE8E]" id="events">
       <div className="flex flex-col max-w-7xl justify-center mx-auto px-6">
@@ -63,34 +77,47 @@ const OurPrograms = () => {
           className="w-full"
         >
           <CarouselContent>
-            {ourPrograms.map((ourPogram) => {
-              return (
-                <CarouselItem
-                  className="md:basis-1/2 lg:basis-1/3"
-                  key={ourPogram.id}
-                >
-                  <Link href={`/events/${ourPogram.slug}`} className="w-fit">
-                    <div className="bg-white rounded-b-md rounded-t-xl">
-                      <Image
-                        src={ourPogram.image}
-                        alt={ourPogram.title}
-                        width={1000}
-                        height={1000}
-                        className="rounded-md"
-                      />
-                      <div className="p-5">
-                        <h1 className="text-blueLTK uppercase font-bold text-base md:text-lg lg:text-2xl md:max-w-xs">
-                          {truncateText(ourPogram.title, 30)}
-                        </h1>
-                        <p className="text-sm md:text-base mt-3">
-                          {truncateText(ourPogram.description, 100)}
-                        </p>
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 mt-5 md:mt-10">
+                <Skeleton className="w-full h-48" />
+                <Skeleton className="w-full h-48" />
+                <Skeleton className="w-full h-48" />
+                <Skeleton className="w-full h-48" />
+              </div>
+            ) : (
+              events &&
+              events.slice(0, 3).map((event) => {
+                return (
+                  <CarouselItem
+                    className="md:basis-1/2 lg:basis-1/3"
+                    key={event.id}
+                  >
+                    <Link href={`/events/${event.slug}`} className="w-fit">
+                      <div className="bg-white rounded-b-md rounded-t-xl">
+                        <Image
+                          src={event.image}
+                          alt={event.title}
+                          width={1000}
+                          height={1000}
+                          className="rounded-md"
+                        />
+                        <div className="p-5">
+                          <h1 className="px-3 py-1 text-xs md:text-sm bg-yellowLTK w-fit rounded-md shadow-sm shadow-yellowLTK/90 mb-3">
+                            {formatDate(event.startEvent)}
+                          </h1>
+                          <h1 className="text-blueLTK uppercase font-bold text-base md:text-lg lg:text-2xl md:max-w-xs">
+                            {truncateText(event.title, 30)}
+                          </h1>
+                          <p className="text-sm md:text-base mt-3">
+                            {truncateText(event.shortDescription, 100)}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                </CarouselItem>
-              );
-            })}
+                    </Link>
+                  </CarouselItem>
+                );
+              })
+            )}
           </CarouselContent>
           <div className="hidden md:flex md:absolute md:-top-[4.5rem] md:right-32">
             <CarouselPrevious className="bg-yellowLTK rounded-none border-none h-10 w-10" />
@@ -103,7 +130,7 @@ const OurPrograms = () => {
           asChild
         >
           <Link
-            href={"/coming-soon"}
+            href={"/events"}
             className="flex flex-row justify-between gap-4 uppercase"
           >
             <span>View More</span>

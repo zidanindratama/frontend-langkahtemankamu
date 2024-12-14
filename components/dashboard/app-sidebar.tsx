@@ -55,17 +55,33 @@ const data = {
       roles: ["ADMINISTRATOR"],
     },
     {
-      title: "Categories",
+      title: "Article Categories",
       url: "/dashboard/categories",
       icon: SquareTerminal,
       items: [
         {
-          title: "Add Category",
+          title: "Add Article Category",
           url: "/dashboard/categories/add",
         },
         {
-          title: "List of Categories",
+          title: "List of Article Categories",
           url: "/dashboard/categories",
+        },
+      ],
+      roles: ["ADMINISTRATOR"],
+    },
+    {
+      title: "Event Categories",
+      url: "/dashboard/event-categories",
+      icon: SquareTerminal,
+      items: [
+        {
+          title: "Add Event Category",
+          url: "/dashboard/event-categories/add",
+        },
+        {
+          title: "List of Event Categories",
+          url: "/dashboard/event-categories",
         },
       ],
       roles: ["ADMINISTRATOR"],
@@ -82,6 +98,22 @@ const data = {
         {
           title: "List of Articles",
           url: "/dashboard/articles",
+        },
+      ],
+      roles: ["ADMINISTRATOR", "BLOGGER"],
+    },
+    {
+      title: "Events",
+      url: "#",
+      icon: BookOpen,
+      items: [
+        {
+          title: "Add Event",
+          url: "/dashboard/events/add",
+        },
+        {
+          title: "List of Events",
+          url: "/dashboard/events",
         },
       ],
       roles: ["ADMINISTRATOR", "BLOGGER"],

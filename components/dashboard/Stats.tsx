@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 
 interface Status {
   totalUsers: number;
-  totalCategories: number;
+  totalEvents: number;
   totalBlogs: number;
 }
 
@@ -34,8 +34,8 @@ const Stats = () => {
       </div>
       <div className="border rounded-md p-4 bg-white flex flex-row justify-between">
         <div className="">
-          <h1 className="font-light text-sm">Total Categories</h1>
-          <h3 className="font-bold text-3xl">{status?.totalCategories}</h3>
+          <h1 className="font-light text-sm">Total Events</h1>
+          <h3 className="font-bold text-3xl">{status?.totalEvents}</h3>
         </div>
         <SquareTerminal className="w-8 h-8" />
       </div>

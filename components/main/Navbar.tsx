@@ -37,7 +37,7 @@ export const navLinks: NavLink[] = [
   {
     id: 4,
     label: "Events",
-    href: "/coming-soon",
+    href: "/events",
     mainHref: "#events",
   },
 ];

@@ -54,11 +54,12 @@ const BlogUpdateForm = ({ slug }: Props) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: "",
-      shortDescription: "",
-      content: "",
-      coverImage: null,
+    values: {
+      title: blogData?.data.title,
+      shortDescription: blogData?.data.shortDescription,
+      content: blogData?.data.content,
+      featured: blogData?.data.featured === true ? "true" : "false",
+      coverImage: blogData?.data.image,
     },
   });
 
@@ -67,18 +68,11 @@ const BlogUpdateForm = ({ slug }: Props) => {
 
   useEffect(() => {
     if (isSuccess && blogData) {
-      reset({
-        title: blogData.data.title || "",
-        shortDescription: blogData.data.shortDescription || "",
-        content: blogData.data.content || "",
-        featured: blogData.data.featured === true ? "true" : "false",
-        coverImage: blogData.data.image || null,
-      });
       if (editorRef.current) {
         editorRef.current.commands.setContent(blogData.data.content || "");
       }
     }
-  }, [blogData, isSuccess, reset]);
+  }, [blogData, isSuccess]);
 
   const coverImageRef = form.register("coverImage");
 

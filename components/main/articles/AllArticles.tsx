@@ -7,15 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -88,7 +79,7 @@ const AllArticles = () => {
     setSearch("");
     setSelectedSortOrderBy(null);
     setSelectedCategory(null);
-    setPageIndex(0); // Reset page index when resetting filters
+    setPageIndex(0);
   };
 
   const handlePageChange = (newPageIndex: number) => {

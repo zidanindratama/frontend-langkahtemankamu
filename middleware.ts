@@ -12,13 +12,20 @@ export async function middleware(request: NextRequest) {
 
   const baseRoutes = ["/dashboard", "/dashboard/profile"];
 
-  const adminRoutes = ["/dashboard/users", "/dashboard/categories"];
+  const adminRoutes = [
+    "/dashboard/users",
+    "/dashboard/categories",
+    "/dashboard/event-categories",
+  ];
 
   const bloggerRoutes = ["/test/bloggerRoutes"];
 
   const memberRoutes = ["/test/memberRoutes"];
 
-  const commonAdminAndBloggerRoutes = ["/dashboard/articles"];
+  const commonAdminAndBloggerRoutes = [
+    "/dashboard/articles",
+    "/dashboard/events",
+  ];
 
   const accessToken = cookieStore.get("accessToken");
 

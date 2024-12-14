@@ -63,7 +63,7 @@ const BlogAddForm = () => {
   const mutationCreateBlog = useAddData({
     queryKey: "blogsData",
     dataProtected: `blogs`,
-    backUrl: `/dashboard/blogs`,
+    backUrl: `/dashboard/articles`,
     multipart: true,
   });
 

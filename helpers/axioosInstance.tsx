@@ -5,7 +5,7 @@ const DEV_URL = "http://localhost:3100/api";
 const PROD_URL = "https://backend-langkahtemankamu.vercel.app/api";
 
 const axiosInstance = axios.create({
-  baseURL: PROD_URL,
+  baseURL: DEV_URL,
   withCredentials: true,
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
@@ -22,7 +22,7 @@ async function refreshAccessToken() {
   }
 
   const newAccessToken = await axios.post(
-    `${PROD_URL}/auth/refresh-token`,
+    `${DEV_URL}/auth/refresh-token`,
     null,
     {
       headers: {
@@ -39,7 +39,7 @@ async function refreshAccessToken() {
 // Refreshtoken from server's cookie
 const refreshAuthToken = async () => {
   try {
-    const response = await axios.post(`${PROD_URL}/auth/refresh-token`, null, {
+    const response = await axios.post(`${DEV_URL}/auth/refresh-token`, null, {
       withCredentials: true,
     });
     const newAccessToken = response.data.access_token;

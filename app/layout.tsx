@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import TanStackProvider from "@/providers/tanstackQueryProvider";
-import Navbar from "@/components/main/Navbar";
-import Footer from "@/components/main/Footer";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
@@ -12,6 +10,14 @@ export const metadata: Metadata = {
   },
   description:
     "We are founded to be initiator in creating real contributions in increasing understanding and awareness of the global community.",
+  icons: {
+    icon: [
+      {
+        url: "/main/favicon/favicon.ico",
+        href: "/main/favicon/favicon.ico",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

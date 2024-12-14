@@ -19,7 +19,6 @@ const AllFeaturedArticles = () => {
   });
 
   const featured = allFeaturedBlogsData?.data.blogs as Blog[];
-  console.log(featured);
 
   return (
     <div>
